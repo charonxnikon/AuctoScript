@@ -1,0 +1,14 @@
+{
+	$demand = ?demand();
+	$demandmax = ?production_price();
+	$supply = ?supply();
+	$count_fac = ?factories(?my_id());
+	$supplymin = ?raw_price();
+	?print(?my_id());
+	?print(?my_id());
+	$lol = 1;
+	?buy($lol,?money(?my_id()));
+	?sell(?production(?my_id()), $demandmax);
+	?prod(?raw(?my_id()));
+}
+end

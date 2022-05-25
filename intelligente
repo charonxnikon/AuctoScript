@@ -1,0 +1,115 @@
+{
+	$winsrawcount = 0; 
+	$failsrawcount = 0;
+	$winsrawprice = 0;
+	$failsrawprice = 0;
+	$winsprodcount = 0;
+	$failsprodcount = 0;
+	$winsprodprice = 0;
+	$failsprodprice = 0;
+	$users = ?active_players();
+	$count_fac = ?factories(?my_id());
+	
+	while ?money(?my_id()) < $demand * 2000{
+        	$count_fac = $count_fac - 1;
+ 	};
+	?prod($count_fac);
+	$k = 1;
+	while $k < $users{
+		if ?result_raw_sold($k) >= 1{
+			$winsrawcount[$i] = ?result_raw_sold($k);
+			$winsrawprice[$i2] = ?result_raw_price($k);
+			$i = $i + 1;
+			$i2 = $i2 + 1;
+		};
+		if ?result_raw_sold($k) < 1{
+			$failsrawcount[$i3] = ?result_raw_sold($k);
+			$failsrawprice[$i4] = ?result_raw_price($k);
+			$i3 = $i3 + 1;
+			$i4 = $i4 + 1; 
+		};
+		$k = $k + 1;
+	};
+	$k = 1;
+	while $k < $users{
+    	if ?result_prod_bought($k) >= 1{
+       		$winsprodcount[$j] = ?result_prod_bought($k);
+			$winsprodprice[$j2] = ?result_prod_price($k);
+            $j = $j + 1;
+			$j2 = $j2 + 1;
+        };
+        if ?result_prod_bought($k) < 1{
+            $failsprodcount[$j3] = ?result_prod_bought($k);
+			$failsprodprice[$j4] = ?result_prod_price($k);
+			$j3 = $j3 + 1;
+			$j4 = $j4 + 1;	
+		};
+            $k = $k + 1;
+        };
+	$k = 1;
+	while $k < $users{
+		$allproduct = $allproduct + ?production($k);
+		if ?demand() < $allproduct{
+			$deltaprod = $deltaprod + 1;
+		};
+		$k = $k + 1;
+	};
+	$k = 1;
+	while $k < $users{
+    	$allraw = $allraw + ?raw($k);
+       	if ?supply() < $allraw{
+       		$deltaraw = $deltaraw + 1;
+       	};
+        	$k = $k + 1;
+   	};    
+	if $deltaprod > 3{
+		$k = 1;
+		while $k < $users{
+			while $j11 < $j1{
+				$sWprodc = $sWprodc + $winsprodcount[$j11];
+				$j11 = $j11 + 1;
+			};
+			while $j21 < $j2{
+				$sWprodp = $sWprodp + $winsprodprice[$j21];
+				$j21 = $j21 + 1;
+			};
+		};
+		$resultpprice = $sWprodp / $j2;
+		$resultpcount = $sWprodc / $j1;
+		if ($resultpcount <= ?production(?my_id())){
+			?sell($resultpcount,$resultpprice);
+		};
+		if ($resultpcount > ?production(?my_id())){
+			?sell(?production(?my_id()),$resultpprice);
+		};
+	};
+	if $deltaraw > 3{
+		$k = 1;
+		while $k < $users{
+			while $i11 < $i1{
+				$sWrawc = $sWrawc + $winsrawcount[$i11];
+				$i11 = $i11 + 1;
+			};
+			while $i21 < $i2{
+				$sWrawp = $sWrawp + $winsrawprice[$i21];
+				$i21 = $i21 + 1;
+			};
+		};
+		$resultrprice = $sWrawp / $i2;
+		$resultrcount = $sWrawc / $i1;
+		if ($resultrcount <= ?raw(?my_id())){
+			?buy($resultrcount,$resultrprice);
+		};
+		if ($resultrcount > ?raw(?my_id())){
+			?buy(2,$resulttprice);
+		};
+	};
+	if $deltaprod <= 3{
+		?sell(?production(?my_id()),?production_price());
+	};
+	if $deltaraw <= 3{
+		?buy(2,?raw_price());
+	};	 
+	
+}
+end
