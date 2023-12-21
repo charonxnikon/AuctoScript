@@ -85,6 +85,11 @@ python3 <filename.py>
 ```
 Для ipynb файла необходимо имет среду IDE
 
+
+<img width="613" alt="Снимок экрана 2023-12-21 в 03 41 53" src="https://github.com/charonxnikon/MODELING_STOCHASTIC_MARKETS/assets/73964925/2f7d7ccf-0a4d-44ac-9f3c-4f0d208a5335">
+
+
+
 Демонстрация по запуску (2 года назад, но поможет запустить, если не было понятно) приведена по ссылке: https://www.youtube.com/watch?v=gDnHVCa7J-U
 
 ## Апробация
