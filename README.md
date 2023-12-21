@@ -44,12 +44,16 @@ https://systems.enpress-publisher.com/index.php/FSJ/article/view/2931
 
 Запуск: gcc ... 
 
-Пример: gcc −Wall −g server_2 . c −o server_1 testing . txt 
-./ server_1 2000 2 
+Пример: 
+```bash
+gcc −Wall −g server_2 . c −o server_1 testing . txt 
+./ server_1 2000 2
+```
 (Подключение двух пользователей к 2000 порту)
-
+```bash
 gcc −Wall −g server_vfinal_2 . c −o server_2 
 ./ server_2 3000 4
+```
 в случе без реальных данных ()
 
 # Интерпретатор на С++
@@ -68,14 +72,20 @@ gcc −Wall −g server_vfinal_2 . c −o server_2
 
 Запуск: g++ ... 
 
-Пример: g++ −Wall −g interpreter .cpp −o inter
+Пример:
+```bash
+g++ −Wall −g interpreter .cpp −o inter
 ./ inter 0 2000 stupido
+```
 
 # Интерактивная часть на Python
 
 Для интерактивной части использовался tkinter, необходимо запустить .ipynb файл (использует выход серверной части) и все файоы формата .py 
 
-Запуск: python3 <filename.py>
+Запуск: 
+```bash
+python3 <filename.py>
+```
 Для ipynb файла необходимо имет среду IDE
 
 Демонстрация по запуску (2 года назад, но поможет запустить, если не было понятно) приведена по ссылке: https://www.youtube.com/watch?v=gDnHVCa7J-U
