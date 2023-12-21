@@ -91,7 +91,8 @@ g++ −Wall −g interpreter .cpp −o inter
 			$failsrawcount[$i3] = ?result_raw_sold($k);
 			$failsrawprice[$i4] = ?result_raw_price($k);
 			$i3 = $i3 + 1;
-			$i4 = $i4 + 1; 
+			$i4 = $i4 + 1;
+		};
 	if $deltaraw <= 3{
 		?buy(2,?raw_price());
 	};	 
