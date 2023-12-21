@@ -75,6 +75,29 @@ g++ −Wall −g interpreter .cpp −o inter
 ./ inter 0 2000 stupido
 ```
 
+Пример программы на интерпретируемом языке AuctoScript: 
+```c
+{
+	
+	$failsprodprice = 0;
+	$users = ?active_players();
+	$count_fac = ?factories(?my_id());
+	
+	while ?money(?my_id()) < $demand * 2000{
+        	$count_fac = $count_fac - 1;
+ 	};
+	?prod($count_fac);
+		if ?result_raw_sold($k) < 1{
+			$failsrawcount[$i3] = ?result_raw_sold($k);
+			$failsrawprice[$i4] = ?result_raw_price($k);
+			$i3 = $i3 + 1;
+			$i4 = $i4 + 1; 
+	if $deltaraw <= 3{
+		?buy(2,?raw_price());
+	};	 
+}
+end
+```
 # Интерактивная часть на Python
 
 Для интерактивной части использовался tkinter, необходимо запустить .ipynb файл (использует выход серверной части) и все файоы формата .py 
